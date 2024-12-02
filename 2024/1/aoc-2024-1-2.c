@@ -6,14 +6,6 @@ void append(int** arr, int* newval, int len) {
     (*arr)[len] = *newval;
 }
 
-int comp(const void* a,const void* b) {
-    return *(int*)a - *(int*)b;
-}
-
-void sort(int* arr, int len) {
-    qsort(arr, len, sizeof(int), comp);
-}
-
 int main(int argc, char *argv[]) {
     int *int1 = malloc(sizeof(int));
     int *int2 = malloc(sizeof(int));
@@ -27,13 +19,16 @@ int main(int argc, char *argv[]) {
         append(&nums2, int2, len);
         len++;
     }
-
-    sort(nums1, len);
-    sort(nums2, len);
    
     int total = 0;
     for (int i = 0; i < len; ++i) {
-        total += abs(nums1[i] - nums2[i]);
+        int count = 0;
+        for (int j = 0; j < len; ++j) {
+            if (nums1[i] == nums2[j]) {
+                count++;
+            }
+        }
+        total += nums1[i]*count;
     }
 
     printf("%d\n", total);
