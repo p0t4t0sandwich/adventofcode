@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
         char inc = 'n';
         for (int i = 0; i < len; i++) {
             int num = atoi(&nums[i]);
-            printf("%d", num);
+            printf("%c,%d", nums[i], num);
             if (prev == -1) {
                 prev = num;
                 continue;
